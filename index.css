@@ -1,0 +1,56 @@
+/* .aa button {
+    text-decoration: none;
+    background: green;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 30px; 
+    padding: 20px 70px;
+    border-radius: 25px;
+    margin: 30px; 
+    ruby-align: right;
+}
+
+
+
+
+.aa button:hover {
+    color: #fff;
+    background-color: greenyellow;
+    padding: 20px 70px;
+    border-radius: 25px;
+} */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 50px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.start-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: green;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 20px 70px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    justify-content: flex-end
+}
+
+.start-button:hover {
+    background-color: greenyellow;
+}
