@@ -1,0 +1,9 @@
+body {
+text-align: center;
+}
+ 
+.box img{
+    width: 200px;   /* רוחב */
+    height: auto; 
+    border-radius: 20px;
+}
