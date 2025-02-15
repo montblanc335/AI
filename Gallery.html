@@ -1,270 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Image Gallery</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: url('נוף/נוף (14).jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        header {
-            position: fixed;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: green;
-            padding: 20px 0;
-            text-align: center;
-            z-index: 1000;
-        }
-
-        header {
-            top: 0;
-        }
-
-        header h1 {
-            font-size: 3em;
-            font-family: 'Times New Roman', Times, serif;
-            margin: 0;
-        }
-
-        .content {
-            margin-top: 100px;
-            margin-bottom: 100px;
-        }
-
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            padding: 20px;
-            max-width: 1200px;
-            background-color: rosybrown;
-            border-radius: 8px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: auto;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            flex-direction: column;
-        }
-
-        .modal img {
-            max-width: 90%;
-            max-height: 70%;
-            border-radius: 8px;
-        }
-
-        .modal .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-        }
-
-        .modal .download {
-            margin-top: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 15px 40px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 25px;
-            text-decoration: none;
-            width: auto;
-        }
-
-        .modal .download:hover {
-            background-color: greenyellow;
-        }
-
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 50px;
-            color: green;
-            cursor: pointer;
-            user-select: none;
-            transition: color 0.3s;
-        }
-
-        .arrow:hover {
-            color: lightgreen;
-        }
-
-        .left {
-            left: 20px;
-        }
-
-        .right {
-            right: 20px;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <h1>גלריית אומנות</h1>
-    </header>
-    <div class="content">
-        <div class="gallery">
-            <img src="img/תמונות מדיזינר/Designer (1).jpeg" alt="Image 1"
-                data-full="img/תמונות מדיזינר/Designer (1).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (10).jpeg" alt="Image 2"
-                data-full="img/תמונות מדיזינר/Designer (10).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (1).png" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (1).png">
-            <img src="img/תמונות מדיזינר/Designer (11).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (11).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (12).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (12).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (13).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (13).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (14).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (14).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (15).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (15).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (16).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (16).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (17).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (17).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (18).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (18).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (19).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (19).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (2).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (2).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (2).png" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (2).png">
-            <img src="img/תמונות מדיזינר/Designer (20).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (20).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (21).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (21).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (22).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (22).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (23).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (23).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (24).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (24).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (25).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (25).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (26).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (26).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (27).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (27).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (28).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (28).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (3).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (3).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (4).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (4).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (5).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (5).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (6).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (6).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (7).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (7).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (8).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (8).jpeg">
-            <img src="img/תמונות מדיזינר/Designer (9).jpeg" alt="Image 3"
-                data-full="img/תמונות מדיזינר/Designer (9).jpeg">
-        </div>
-    </div>
-    <div class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-img" src="" alt="">
-        <a class="download" href="#" download>הורד תמונה</a>
-    </div>
-    <script>
-        const images = document.querySelectorAll('.gallery img');
-        const modal = document.querySelector('.modal');
-        const modalImg = modal.querySelector('.modal-img');
-        const closeBtn = modal.querySelector('.close');
-        const downloadBtn = modal.querySelector('.download');
-        const leftArrow = modal.querySelector('.left');
-        const rightArrow = modal.querySelector('.right');
-        let currentIndex = 0;
-
-        function showImage(index) {
-            const imgSrc = images[index].getAttribute('data-full');
-            modal.style.display = 'flex';
-            modalImg.src = imgSrc;
-
-            // הורדה ישירה של התמונה
-            fetch(imgSrc)
-                .then(response => response.blob())
-                .then(blob => {
-                    const url = URL.createObjectURL(blob);
-                    downloadBtn.href = url;
-                    downloadBtn.download = imgSrc.split('/').pop(); // שם הקובץ שישמר
-                })
-                .catch(error => console.error('שגיאה בהורדה:', error));
-        }
-
-        images.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                showImage(index);
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        leftArrow.addEventListener('click', () => {
-            showImage(currentIndex - 1);
-        });
-
-        rightArrow.addEventListener('click', () => {
-            showImage(currentIndex + 1);
-        });
-
-    </script>
-
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -478,7 +211,28 @@
         <div class="arrow left">&#10094;</div>
         <div class="arrow right">&#10095;</div>
     </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.2/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.2/firebase-database-compat.min.js"></script>
+
     <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyYourAPIKey",
+            authDomain: "your-project.firebaseapp.com",
+            databaseURL: "https://your-project-default-rtdb.firebaseio.com",
+            projectId: "your-project",
+            storageBucket: "your-project.appspot.com",
+            messagingSenderId: "yourMessageSenderId",
+            appId: "yourAppId"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const likesRef = database.ref('likes');
+
         // List of images
         const imageList = [
             "img/תמונות מדיזינר/Designer (1).jpeg",
@@ -513,43 +267,44 @@
             "img/תמונות מדיזינר/Designer (9).jpeg"
         ];
 
-        // Storage for likes
-        let likes = {};
+        // Map to store user's liked images (for UI state)
+        let userLikedImages = {};
 
-        // Check if likes exist in localStorage
-        if (localStorage.getItem('galleryLikes')) {
-            likes = JSON.parse(localStorage.getItem('galleryLikes'));
-        }
+        // Storage for global likes count
+        let globalLikes = {};
+
+        // Generate a unique ID for this user session
+        const userId = 'user_' + Math.random().toString(36).substr(2, 9);
 
         // Create gallery items
         const galleryContainer = document.getElementById('gallery');
-        
+
         imageList.forEach((imgSrc, index) => {
             // Create container for image and like button
             const container = document.createElement('div');
             container.className = 'image-container';
-            
+
             // Create image
             const img = document.createElement('img');
             img.src = imgSrc;
             img.alt = `Image ${index + 1}`;
             img.dataset.full = imgSrc;
             img.dataset.index = index;
-            
+
             // Create like container
             const likeContainer = document.createElement('div');
             likeContainer.className = 'like-container';
-            
+
             // Create like button
             const likeBtn = document.createElement('i');
-            likeBtn.className = `fas fa-heart like-btn ${likes[index] ? 'liked' : ''}`;
+            likeBtn.className = 'fas fa-heart like-btn';
             likeBtn.dataset.index = index;
-            
+
             // Create like counter
             const likeCount = document.createElement('span');
             likeCount.className = 'like-count';
-            likeCount.textContent = likes[index] ? 1 : 0;
-            
+            likeCount.textContent = '0';
+
             // Append elements
             likeContainer.appendChild(likeBtn);
             likeContainer.appendChild(likeCount);
@@ -588,12 +343,12 @@
         function showImage(index) {
             if (index < 0) index = images.length - 1;
             if (index >= images.length) index = 0;
-            
+
             currentIndex = index;
             const imgSrc = images[index].getAttribute('data-full');
             modal.style.display = 'flex';
             modalImg.src = imgSrc;
-            
+
             // Update like button and count in modal
             updateModalLike();
 
@@ -608,45 +363,62 @@
                 .catch(error => console.error('שגיאה בהורדה:', error));
         }
 
-        // Toggle like for an image
-        function toggleLike(index) {
-            if (likes[index]) {
-                // If already liked, remove the like
-                delete likes[index];
-                
-                // Update like count display
+        // Listen for changes in the Firebase database
+        likesRef.on('value', (snapshot) => {
+            globalLikes = snapshot.val() || {};
+            
+            // Update all like counts in the gallery
+            for (let index in globalLikes) {
+                const count = globalLikes[index] || 0;
                 const likeCountElem = document.querySelector(`.like-btn[data-index="${index}"]`).nextElementSibling;
-                likeCountElem.textContent = 0;
-                
-                // Remove liked class
-                const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
-                likeBtn.classList.remove('liked');
-            } else {
-                // If not liked, add a like
-                likes[index] = 1;
-                
-                // Update like count display
-                const likeCountElem = document.querySelector(`.like-btn[data-index="${index}"]`).nextElementSibling;
-                likeCountElem.textContent = 1;
-                
-                // Add liked class
-                const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
-                likeBtn.classList.add('liked');
+                likeCountElem.textContent = count;
             }
             
-            // Update modal if open
-            if (parseInt(currentIndex) === parseInt(index)) {
+            // Update the modal if it's open
+            if (modal.style.display === 'flex') {
                 updateModalLike();
             }
-            
-            // Save to localStorage
-            localStorage.setItem('galleryLikes', JSON.stringify(likes));
+        });
+
+        // Toggle like for an image
+        function toggleLike(index) {
+            // Get the current transaction for this image
+            likesRef.child(index).transaction((currentLikes) => {
+                if (userLikedImages[index]) {
+                    // User is unliking
+                    delete userLikedImages[index];
+                    return (currentLikes || 0) - 1;
+                } else {
+                    // User is liking
+                    userLikedImages[index] = true;
+                    return (currentLikes || 0) + 1;
+                }
+            });
+
+            // Update like button appearance
+            const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
+            if (userLikedImages[index]) {
+                likeBtn.classList.remove('liked');
+            } else {
+                likeBtn.classList.add('liked');
+            }
+
+            // Update modal if open
+            if (parseInt(currentIndex) === parseInt(index)) {
+                if (userLikedImages[index]) {
+                    modalLikeBtn.classList.remove('liked');
+                } else {
+                    modalLikeBtn.classList.add('liked');
+                }
+            }
         }
 
         // Update modal like button and count
         function updateModalLike() {
-            modalLikeCount.textContent = likes[currentIndex] ? 1 : 0;
-            if (likes[currentIndex]) {
+            const likeCount = globalLikes[currentIndex] || 0;
+            modalLikeCount.textContent = likeCount;
+            
+            if (userLikedImages[currentIndex]) {
                 modalLikeBtn.classList.add('liked');
             } else {
                 modalLikeBtn.classList.remove('liked');
@@ -694,4 +466,5 @@
         });
     </script>
 </body>
+
 </html>
