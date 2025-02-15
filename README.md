@@ -1,2 +1,2 @@
 # AI
-This database includes a website for buying images created with AI.
+This site features images created with artificial intelligence for free download!
