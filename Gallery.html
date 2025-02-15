@@ -211,28 +211,7 @@
         <div class="arrow left">&#10094;</div>
         <div class="arrow right">&#10095;</div>
     </div>
-
-    <!-- Firebase SDK -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.2/firebase-app-compat.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.2/firebase-database-compat.min.js"></script>
-
     <script>
-        // Initialize Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyYourAPIKey",
-            authDomain: "your-project.firebaseapp.com",
-            databaseURL: "https://your-project-default-rtdb.firebaseio.com",
-            projectId: "your-project",
-            storageBucket: "your-project.appspot.com",
-            messagingSenderId: "yourMessageSenderId",
-            appId: "yourAppId"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-        const likesRef = database.ref('likes');
-
         // List of images
         const imageList = [
             "img/תמונות מדיזינר/Designer (1).jpeg",
@@ -267,14 +246,13 @@
             "img/תמונות מדיזינר/Designer (9).jpeg"
         ];
 
-        // Map to store user's liked images (for UI state)
-        let userLikedImages = {};
+        // Storage for likes
+        let likes = {};
 
-        // Storage for global likes count
-        let globalLikes = {};
-
-        // Generate a unique ID for this user session
-        const userId = 'user_' + Math.random().toString(36).substr(2, 9);
+        // Check if likes exist in localStorage
+        if (localStorage.getItem('galleryLikes')) {
+            likes = JSON.parse(localStorage.getItem('galleryLikes'));
+        }
 
         // Create gallery items
         const galleryContainer = document.getElementById('gallery');
@@ -297,13 +275,13 @@
 
             // Create like button
             const likeBtn = document.createElement('i');
-            likeBtn.className = 'fas fa-heart like-btn';
+            likeBtn.className = `fas fa-heart like-btn ${likes[index] ? 'liked' : ''}`;
             likeBtn.dataset.index = index;
 
             // Create like counter
             const likeCount = document.createElement('span');
             likeCount.className = 'like-count';
-            likeCount.textContent = '0';
+            likeCount.textContent = likes[index] ? 1 : 0;
 
             // Append elements
             likeContainer.appendChild(likeBtn);
@@ -363,62 +341,45 @@
                 .catch(error => console.error('שגיאה בהורדה:', error));
         }
 
-        // Listen for changes in the Firebase database
-        likesRef.on('value', (snapshot) => {
-            globalLikes = snapshot.val() || {};
-            
-            // Update all like counts in the gallery
-            for (let index in globalLikes) {
-                const count = globalLikes[index] || 0;
-                const likeCountElem = document.querySelector(`.like-btn[data-index="${index}"]`).nextElementSibling;
-                likeCountElem.textContent = count;
-            }
-            
-            // Update the modal if it's open
-            if (modal.style.display === 'flex') {
-                updateModalLike();
-            }
-        });
-
         // Toggle like for an image
         function toggleLike(index) {
-            // Get the current transaction for this image
-            likesRef.child(index).transaction((currentLikes) => {
-                if (userLikedImages[index]) {
-                    // User is unliking
-                    delete userLikedImages[index];
-                    return (currentLikes || 0) - 1;
-                } else {
-                    // User is liking
-                    userLikedImages[index] = true;
-                    return (currentLikes || 0) + 1;
-                }
-            });
+            if (likes[index]) {
+                // If already liked, remove the like
+                delete likes[index];
 
-            // Update like button appearance
-            const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
-            if (userLikedImages[index]) {
+                // Update like count display
+                const likeCountElem = document.querySelector(`.like-btn[data-index="${index}"]`).nextElementSibling;
+                likeCountElem.textContent = 0;
+
+                // Remove liked class
+                const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
                 likeBtn.classList.remove('liked');
             } else {
+                // If not liked, add a like
+                likes[index] = 1;
+
+                // Update like count display
+                const likeCountElem = document.querySelector(`.like-btn[data-index="${index}"]`).nextElementSibling;
+                likeCountElem.textContent = 1;
+
+                // Add liked class
+                const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
                 likeBtn.classList.add('liked');
             }
 
             // Update modal if open
             if (parseInt(currentIndex) === parseInt(index)) {
-                if (userLikedImages[index]) {
-                    modalLikeBtn.classList.remove('liked');
-                } else {
-                    modalLikeBtn.classList.add('liked');
-                }
+                updateModalLike();
             }
+
+            // Save to localStorage
+            localStorage.setItem('galleryLikes', JSON.stringify(likes));
         }
 
         // Update modal like button and count
         function updateModalLike() {
-            const likeCount = globalLikes[currentIndex] || 0;
-            modalLikeCount.textContent = likeCount;
-            
-            if (userLikedImages[currentIndex]) {
+            modalLikeCount.textContent = likes[currentIndex] ? 1 : 0;
+            if (likes[currentIndex]) {
                 modalLikeBtn.classList.add('liked');
             } else {
                 modalLikeBtn.classList.remove('liked');
