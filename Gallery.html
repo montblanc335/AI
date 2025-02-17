@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4CAF50;
+            --primary - color: #4CAF50;
             --primary-hover: #45a049;
             --secondary-color: #2c3e50;
             --accent-color: #e74c3c;
@@ -22,13 +22,13 @@
         }
 
         * {
-            box-sizing: border-box;
+            box - sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font - family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-image: url('נוף/נוף (14).jpg');
             background-size: cover;
             background-position: center;
@@ -52,7 +52,7 @@
         }
 
         header h1 {
-            font-size: 2.5em;
+            font - size: 2.5em;
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -66,7 +66,7 @@
         }
 
         .content {
-            margin-top: 120px;
+            margin - top: 120px;
             margin-bottom: 50px;
             padding: 0 20px;
         }
@@ -127,7 +127,7 @@
         }
 
         .like-container:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            background - color: rgba(0, 0, 0, 0.8);
         }
 
         .like-btn {
@@ -147,6 +147,36 @@
         }
 
         .like-count {
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Comments Container on Gallery */
+        .comments-count-container {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 50px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .comments-count-container:hover {
+            background - color: rgba(0, 0, 0, 0.8);
+        }
+
+        .comments-count-icon {
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        .comments-count {
             color: var(--text-light);
             font-size: 14px;
             font-weight: bold;
@@ -182,7 +212,7 @@
         }
 
         .modal img {
-            max-width: 100%;
+            max - width: 100%;
             max-height: 70vh;
             border-radius: var(--border-radius);
             object-fit: contain;
@@ -207,7 +237,7 @@
 
         /* Modern Download Button */
         .modal .download {
-            margin-top: 25px;
+            margin - top: 25px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 12px 35px;
             background-color: var(--primary-color);
@@ -226,7 +256,7 @@
         }
 
         .modal .download:hover {
-            background-color: var(--primary-hover);
+            background - color: var(--primary-hover);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
@@ -239,7 +269,7 @@
 
         /* Enhanced Modal Like Container */
         .modal-like-container {
-            margin-top: 20px;
+            margin - top: 20px;
             background-color: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(5px);
             border-radius: 50px;
@@ -251,7 +281,7 @@
         }
 
         .modal-like-container:hover {
-            background-color: rgba(0, 0, 0, 0.6);
+            background - color: rgba(0, 0, 0, 0.6);
         }
 
         .modal-like-btn {
@@ -313,7 +343,7 @@
 
         /* Enhanced Comment Section */
         .comments-section {
-            margin-top: 30px;
+            margin - top: 30px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: var(--border-radius);
             padding: 25px;
@@ -333,12 +363,12 @@
         }
 
         .comments-header i {
-            margin-left: 10px;
+            margin - left: 10px;
             color: var(--primary-color);
         }
 
         .comment-list {
-            margin-bottom: 20px;
+            margin - bottom: 20px;
             max-height: 350px;
             overflow-y: auto;
             padding-right: 5px;
@@ -362,18 +392,19 @@
             padding: 15px;
             border-bottom: 1px solid #eee;
             transition: var(--transition);
+            position: relative;
         }
 
         .comment:hover {
-            background-color: #f9f9f9;
+            background - color: #f9f9f9;
         }
 
         .comment:last-child {
-            border-bottom: none;
+            border - bottom: none;
         }
 
         .comment-author {
-            font-weight: 600;
+            font - weight: 600;
             color: var(--secondary-color);
             margin-bottom: 5px;
             display: flex;
@@ -391,6 +422,114 @@
         .comment-text {
             color: #555;
             line-height: 1.6;
+        }
+
+        .comment-actions {
+            display: flex;
+            margin-top: 10px;
+            gap: 15px;
+        }
+
+        .comment-action {
+            font - size: 14px;
+            color: var(--secondary-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .comment-action:hover {
+            color: var(--primary-color);
+        }
+
+        .edit-form {
+            margin - top: 10px;
+            display: none;
+        }
+
+        .edit-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        .edit-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .save-edit,
+        .cancel-edit {
+            padding: 5px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .save-edit {
+            background - color: var(--primary-color);
+            color: white;
+        }
+
+        .save-edit:hover {
+            background - color: var(--primary-hover);
+        }
+
+        .cancel-edit {
+            background - color: #ddd;
+            color: var(--text-dark);
+        }
+
+        .cancel-edit:hover {
+            background - color: #ccc;
+        }
+
+        .quoted-comment {
+            background - color: #f5f5f5;
+            border-right: 3px solid var(--primary-color);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .quoted-author {
+            font - weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .quote-prefix {
+            font - weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .comment-timestamp {
+            font - size: 12px;
+            color: #999;
+            margin-right: 10px;
         }
 
         .comment-form {
@@ -438,8 +577,35 @@
         }
 
         .comment-form button:hover {
-            background-color: var(--primary-hover);
+            background - color: var(--primary-hover);
             transform: translateY(-2px);
+        }
+
+        .quote-block {
+            display: none;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .quote-container {
+            background - color: #f5f5f5;
+            border-right: 3px solid var(--primary-color);
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .remove-quote {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            cursor: pointer;
+            color: var(--accent-color);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .remove-quote:hover {
+            transform: scale(1.2);
         }
 
         .error-message {
@@ -453,7 +619,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid - template - columns: repeat(auto-fill, minmax(200px, 1fr));
                 padding: 15px;
                 gap: 15px;
             }
@@ -463,11 +629,11 @@
             }
 
             header h1 {
-                font-size: 1.8em;
+                font - size: 1.8em;
             }
 
             .arrow {
-                font-size: 40px;
+                font - size: 40px;
                 height: 80px;
                 width: 40px;
             }
@@ -483,25 +649,32 @@
 
         @media (max-width: 480px) {
             .gallery {
-                grid-template-columns: 1fr;
+                grid - template - columns: 1fr;
             }
 
             .arrow {
-                font-size: 30px;
+                font - size: 30px;
                 height: 60px;
                 width: 30px;
             }
 
             .modal .download {
-                font-size: 16px;
+                font - size: 16px;
                 padding: 10px 25px;
             }
         }
 
         /* Animation for gallery items */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .image-container {
@@ -529,7 +702,7 @@
                 <span class="modal-like-count">0</span>
             </div>
             <a class="download" href="#" download>הורד תמונה</a>
-            
+
             <!-- Enhanced Comments Section -->
             <div class="comments-section">
                 <div class="comments-header">
@@ -541,6 +714,14 @@
                 </div>
                 <form class="comment-form" id="comment-form">
                     <input type="text" id="comment-name" placeholder="השם שלך" required>
+                    <div class="quote-block" id="quote-block">
+                        <div class="quote-container">
+                            <div class="quote-prefix">מצטט:</div>
+                            <div class="quoted-author" id="quoted-author"></div>
+                            <div class="quoted-text" id="quoted-text"></div>
+                            <i class="fas fa-times remove-quote" title="הסר ציטוט"></i>
+                        </div>
+                    </div>
                     <textarea id="comment-text" placeholder="כתוב את התגובה שלך כאן..." rows="3" required></textarea>
                     <div class="error-message" id="error-message">
                         <i class="fas fa-exclamation-circle"></i> כבר הגבת על תמונה זו
@@ -584,7 +765,8 @@
             "img/תמונות מדיזינר/Designer (6).jpeg",
             "img/תמונות מדיזינר/Designer (7).jpeg",
             "img/תמונות מדיזינר/Designer (8).jpeg",
-            "img/תמונות מדיזינר/Designer (9).jpeg"
+            "img/תמונות מדיזינר/Designer (9).jpeg",
+            "img/תמונות מדיזינר/Designer.jpeg"
         ];
 
         // Generate a unique user ID if not exists
@@ -646,11 +828,27 @@
             likeCount.className = 'like-count';
             likeCount.textContent = likes[index] ? likes[index] : 0;
 
+            // Create comments count container
+            const commentsCountContainer = document.createElement('div');
+            commentsCountContainer.className = 'comments-count-container';
+
+            // Create comments icon
+            const commentsIcon = document.createElement('i');
+            commentsIcon.className = 'fas fa-comment comments-count-icon';
+
+            // Get comments count for this image
+            const commentsCount = document.createElement('span');
+            commentsCount.className = 'comments-count';
+            commentsCount.textContent = comments[index] ? comments[index].length : 0;
+
             // Append elements
             likeContainer.appendChild(likeBtn);
             likeContainer.appendChild(likeCount);
+            commentsCountContainer.appendChild(commentsIcon);
+            commentsCountContainer.appendChild(commentsCount);
             container.appendChild(img);
             container.appendChild(likeContainer);
+            container.appendChild(commentsCountContainer);
             galleryContainer.appendChild(container);
         });
 
@@ -669,7 +867,11 @@
         const commentName = document.getElementById('comment-name');
         const commentText = document.getElementById('comment-text');
         const errorMessage = document.getElementById('error-message');
+        const quoteBlock = document.getElementById('quote-block');
+        const quotedAuthor = document.getElementById('quoted-author');
+        const quotedText = document.getElementById('quoted-text');
         let currentIndex = 0;
+        let currentQuotedComment = null;
 
         // Initialize like buttons
         const likeBtns = document.querySelectorAll('.like-btn');
@@ -683,6 +885,12 @@
         // Initialize modal like button
         modalLikeBtn.addEventListener('click', () => {
             toggleLike(currentIndex);
+        });
+
+        // Initialize remove quote button
+        document.querySelector('.remove-quote').addEventListener('click', () => {
+            quoteBlock.style.display = 'none';
+            currentQuotedComment = null;
         });
 
         // Show image in modal and load comments
@@ -707,6 +915,8 @@
             // Reset comment form
             commentForm.reset();
             errorMessage.style.display = 'none';
+            quoteBlock.style.display = 'none';
+            currentQuotedComment = null;
 
             // Set up download button
             fetch(imgSrc)
@@ -714,169 +924,37 @@
                 .then(blob => {
                     const url = URL.createObjectURL(blob);
                     downloadBtn.href = url;
-                    downloadBtn.download = imgSrc.split('/').pop();
-                })
-                .catch(error => console.error('שגיאה בהורדה:', error));
-        }
-
-        // Toggle like for an image
-        function toggleLike(index) {
-            // Check if user already liked this image
-            if (userLikes[index]) {
-                // Remove like
-                delete userLikes[index];
-                
-                // Decrement global like count
-                if (likes[index]) {
-                    likes[index]--;
-                    if (likes[index] <= 0) {
-                        delete likes[index];
-                    }
-                }
-            } else {
-                // Add like
-                userLikes[index] = 1;
-                
-                // Increment global like count
-                if (!likes[index]) {
-                    likes[index] = 1;
-                } else {
-                    likes[index]++;
-                }
-            }
-
-            // Update like button state
-            const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
-            if (userLikes[index]) {
-                likeBtn.classList.add('liked');
-            } else {
-                likeBtn.classList.remove('liked');
-            }
-
-            // Update like count display
-            const likeCountElem = document.querySelector(`.like-btn[data-index="${index}"]`).nextElementSibling;
-            likeCountElem.textContent = likes[index] || 0;
-
-            // Update modal if open
-            if (parseInt(currentIndex) === parseInt(index)) {
-                updateModalLike();
-            }
-
-            // Save to localStorage
-            localStorage.setItem('galleryGlobalLikes', JSON.stringify(likes));
-            localStorage.setItem('userLikes_' + userId, JSON.stringify(userLikes));
-        }
-
-        // Update modal like button and count
-        function updateModalLike() {
-            modalLikeCount.textContent = likes[currentIndex] || 0;
-            if (userLikes[currentIndex]) {
-                modalLikeBtn.classList.add('liked');
-            } else {
-                modalLikeBtn.classList.remove('liked');
-            }
-        }
-
-        // Load comments for an image
-        function loadComments(index) {
-            commentList.innerHTML = '';
-            
-            if (comments[index] && comments[index].length > 0) {
-                comments[index].forEach(comment => {
-                    const commentDiv = document.createElement('div');
-                    commentDiv.className = 'comment';
-                    
-                    const authorDiv = document.createElement('div');
-                    authorDiv.className = 'comment-author';
-                    authorDiv.textContent = comment.name;
-                    
-                    const textDiv = document.createElement('div');
-                    textDiv.className = 'comment-text';
-                    textDiv.textContent = comment.text;
-                    
-                    commentDiv.appendChild(authorDiv);
-                    commentDiv.appendChild(textDiv);
-                    commentList.appendChild(commentDiv);
+                    downloadBtn.download = imgSrc.
+                        // המשך הפונקציה showImage
+                        downloadBtn.download = imgSrc.split('/').pop();
                 });
-            } else {
-                const noComments = document.createElement('p');
-                noComments.style.color = '#666';
-                noComments.textContent = 'אין תגובות עדיין. היה הראשון להגיב!';
-                commentList.appendChild(noComments);
-            }
         }
 
-        // Check if user already commented on this image
-        function hasUserCommented(index) {
-            if (!comments[index]) return false;
-            
-            return comments[index].some(comment => comment.userId === userId);
-        }
-
-        // Add comment to an image
-        function addComment(index, name, text) {
-            if (!comments[index]) {
-                comments[index] = [];
-            }
-            
-            comments[index].push({
-                userId: userId,
-                name: name,
-                text: text,
-                timestamp: new Date().toISOString()
-            });
-            
-            // Save to localStorage
-            localStorage.setItem('galleryComments', JSON.stringify(comments));
-            
-            // Reload comments
-            loadComments(index);
-        }
-
-        // Handle comment form submission
-        commentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Check if user already commented
-            if (hasUserCommented(currentIndex)) {
-                errorMessage.style.display = 'block';
-                return;
-            }
-            
-            const name = commentName.value.trim();
-            const text = commentText.value.trim();
-            
-            if (name && text) {
-                addComment(currentIndex, name, text);
-                this.reset();
-                errorMessage.style.display = 'none';
-            }
-        });
-
-        // Add event listeners
+        // Open modal when clicking on gallery image
         images.forEach(img => {
             img.addEventListener('click', () => {
                 showImage(parseInt(img.dataset.index));
             });
         });
 
+        // Close modal
         closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
         });
 
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
+        // Close modal when clicking outside of modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
                 modal.style.display = 'none';
             }
         });
 
-        leftArrow.addEventListener('click', (e) => {
-            e.stopPropagation();
+        // Navigate through images
+        leftArrow.addEventListener('click', () => {
             showImage(currentIndex - 1);
         });
 
-        rightArrow.addEventListener('click', (e) => {
-            e.stopPropagation();
+        rightArrow.addEventListener('click', () => {
             showImage(currentIndex + 1);
         });
 
@@ -892,6 +970,326 @@
                 }
             }
         });
+
+        // Toggle like function
+        function toggleLike(index) {
+            // Convert index to number if it's a string
+            index = parseInt(index);
+
+            // Update user likes
+            if (userLikes[index]) {
+                delete userLikes[index];
+                if (likes[index] > 0) likes[index]--;
+            } else {
+                userLikes[index] = true;
+                likes[index] = likes[index] ? likes[index] + 1 : 1;
+            }
+
+            // Save to localStorage
+            localStorage.setItem('userLikes_' + userId, JSON.stringify(userLikes));
+            localStorage.setItem('galleryGlobalLikes', JSON.stringify(likes));
+
+            // Update UI
+            updateLikeUI(index);
+            if (parseInt(currentIndex) === index) {
+                updateModalLike();
+            }
+        }
+
+        // Update like UI in gallery
+        function updateLikeUI(index) {
+            const likeBtn = document.querySelector(`.like-btn[data-index="${index}"]`);
+            const likeCount = likeBtn.nextElementSibling;
+
+            if (userLikes[index]) {
+                likeBtn.classList.add('liked');
+            } else {
+                likeBtn.classList.remove('liked');
+            }
+
+            likeCount.textContent = likes[index] ? likes[index] : 0;
+        }
+
+        // Update like in modal
+        function updateModalLike() {
+            if (userLikes[currentIndex]) {
+                modalLikeBtn.classList.add('liked');
+            } else {
+                modalLikeBtn.classList.remove('liked');
+            }
+            modalLikeCount.textContent = likes[currentIndex] ? likes[currentIndex] : 0;
+        }
+
+        // Load comments for an image
+        function loadComments(index) {
+            commentList.innerHTML = '';
+            if (!comments[index] || comments[index].length === 0) return;
+
+            comments[index].forEach((comment, commentIndex) => {
+                const commentElement = createCommentElement(comment, commentIndex, index);
+                commentList.appendChild(commentElement);
+            });
+
+            // Setup comment actions
+            setupCommentActions();
+        }
+
+        // Create comment element
+        function createCommentElement(comment, commentIndex, imageIndex) {
+            const div = document.createElement('div');
+            div.className = 'comment';
+            div.dataset.commentIndex = commentIndex;
+            div.dataset.imageIndex = imageIndex;
+
+            // Create comment content
+            let commentHTML = `
+        <div class="comment-author">${comment.author}</div>
+        <div class="comment-timestamp">${formatTimestamp(comment.timestamp)}</div>
+    `;
+
+            // Add quoted comment if exists
+            if (comment.quotedComment) {
+                commentHTML += `
+            <div class="quoted-comment">
+                <div class="quote-prefix">מצטט:</div>
+                <div class="quoted-author">${comment.quotedComment.author}</div>
+                <div class="quoted-text">${comment.quotedComment.text}</div>
+            </div>
+        `;
+            }
+
+            commentHTML += `<div class="comment-text">${comment.text}</div>`;
+
+            // Add comment actions if the comment belongs to the current user
+            if (comment.userId === userId) {
+                commentHTML += `
+            <div class="comment-actions">
+                <div class="comment-action edit-action">
+                    <i class="fas fa-edit"></i> ערוך
+                </div>
+                <div class="comment-action delete-action">
+                    <i class="fas fa-trash"></i> מחק
+                </div>
+            </div>
+            <div class="edit-form">
+                <textarea class="edit-input">${comment.text}</textarea>
+                <div class="edit-buttons">
+                    <button class="save-edit">שמור</button>
+                    <button class="cancel-edit">בטל</button>
+                </div>
+            </div>
+        `;
+            } else {
+                commentHTML += `
+            <div class="comment-actions">
+                <div class="comment-action quote-action">
+                    <i class="fas fa-quote-right"></i> צטט
+                </div>
+            </div>
+        `;
+            }
+
+            div.innerHTML = commentHTML;
+            return div;
+        }
+
+        // Format timestamp
+        function formatTimestamp(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffSec = Math.floor(diffMs / 1000);
+            const diffMin = Math.floor(diffSec / 60);
+            const diffHour = Math.floor(diffMin / 60);
+            const diffDay = Math.floor(diffHour / 24);
+
+            if (diffSec < 60) {
+                return 'לפני רגע';
+            } else if (diffMin < 60) {
+                return `לפני ${diffMin} דקות`;
+            } else if (diffHour < 24) {
+                return `לפני ${diffHour} שעות`;
+            } else if (diffDay < 30) {
+                return `לפני ${diffDay} ימים`;
+            } else {
+                return date.toLocaleDateString('he-IL');
+            }
+        }
+
+        // Setup comment actions
+        function setupCommentActions() {
+            // Edit comment
+            document.querySelectorAll('.edit-action').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const commentDiv = this.closest('.comment');
+                    const editForm = commentDiv.querySelector('.edit-form');
+                    editForm.style.display = 'block';
+                });
+            });
+
+            // Cancel edit
+            document.querySelectorAll('.cancel-edit').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const editForm = this.closest('.edit-form');
+                    editForm.style.display = 'none';
+                });
+            });
+
+            // Save edit
+            document.querySelectorAll('.save-edit').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const commentDiv = this.closest('.comment');
+                    const editInput = commentDiv.querySelector('.edit-input');
+                    const commentText = commentDiv.querySelector('.comment-text');
+                    const imageIndex = parseInt(commentDiv.dataset.imageIndex);
+                    const commentIndex = parseInt(commentDiv.dataset.commentIndex);
+
+                    // Update comment in storage
+                    comments[imageIndex][commentIndex].text = editInput.value;
+                    localStorage.setItem('galleryComments', JSON.stringify(comments));
+
+                    // Update UI
+                    commentText.textContent = editInput.value;
+                    this.closest('.edit-form').style.display = 'none';
+                });
+            });
+
+            // Delete comment
+            document.querySelectorAll('.delete-action').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    if (confirm('האם אתה בטוח שברצונך למחוק תגובה זו?')) {
+                        const commentDiv = this.closest('.comment');
+                        const imageIndex = parseInt(commentDiv.dataset.imageIndex);
+                        const commentIndex = parseInt(commentDiv.dataset.commentIndex);
+
+                        // Remove comment from storage
+                        comments[imageIndex].splice(commentIndex, 1);
+                        if (comments[imageIndex].length === 0) {
+                            delete comments[imageIndex];
+                        }
+                        localStorage.setItem('galleryComments', JSON.stringify(comments));
+
+                        // Update comments count in gallery
+                        const commentsCountElement = document.querySelector(`.gallery img[data-index="${imageIndex}"]`)
+                            .closest('.image-container')
+                            .querySelector('.comments-count');
+                        commentsCountElement.textContent = comments[imageIndex] ? comments[imageIndex].length : 0;
+
+                        // Remove from UI
+                        commentDiv.remove();
+
+                        // Re-index remaining comments
+                        document.querySelectorAll(`#comment-list .comment[data-image-index="${imageIndex}"]`).forEach((comment, idx) => {
+                            comment.dataset.commentIndex = idx;
+                        });
+                    }
+                });
+            });
+
+            // Quote comment
+            document.querySelectorAll('.quote-action').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const commentDiv = this.closest('.comment');
+                    const author = commentDiv.querySelector('.comment-author').textContent;
+                    const text = commentDiv.querySelector('.comment-text').textContent;
+                    const imageIndex = parseInt(commentDiv.dataset.imageIndex);
+                    const commentIndex = parseInt(commentDiv.dataset.commentIndex);
+
+                    // Set quoted comment
+                    quotedAuthor.textContent = author;
+                    quotedText.textContent = text;
+                    quoteBlock.style.display = 'block';
+
+                    // Store reference to quoted comment
+                    currentQuotedComment = {
+                        imageIndex: imageIndex,
+                        commentIndex: commentIndex,
+                        author: author,
+                        text: text
+                    };
+
+                    // Focus on comment text area
+                    commentText.focus();
+                });
+            });
+        }
+
+        // Handle comment submission
+        commentForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Validate
+            if (!commentName.value.trim() || !commentText.value.trim()) return;
+
+            // Check if user already commented on this image (optional logic to remove)
+            if (comments[currentIndex]) {
+                const userCommented = comments[currentIndex].some(comment => comment.userId === userId);
+                if (userCommented) {
+                    errorMessage.style.display = 'block';
+                    setTimeout(() => {
+                        errorMessage.style.display = 'none';
+                    }, 3000);
+                    return;
+                }
+            }
+
+            // Create comment object
+            const newComment = {
+                author: commentName.value.trim(),
+                text: commentText.value.trim(),
+                timestamp: new Date().getTime(),
+                userId: userId
+            };
+
+            // Add quoted comment if exists
+            if (currentQuotedComment) {
+                newComment.quotedComment = {
+                    author: currentQuotedComment.author,
+                    text: currentQuotedComment.text
+                };
+            }
+
+            // Add to storage
+            if (!comments[currentIndex]) {
+                comments[currentIndex] = [];
+            }
+            comments[currentIndex].push(newComment);
+            localStorage.setItem('galleryComments', JSON.stringify(comments));
+
+            // Update comments count in gallery
+            const commentsCountElement = document.querySelector(`.gallery img[data-index="${currentIndex}"]`)
+                .closest('.image-container')
+                .querySelector('.comments-count');
+            commentsCountElement.textContent = comments[currentIndex].length;
+
+            // Add to UI
+            const commentElement = createCommentElement(
+                newComment,
+                comments[currentIndex].length - 1,
+                currentIndex
+            );
+            commentList.appendChild(commentElement);
+            setupCommentActions();
+
+            // Reset form
+            commentForm.reset();
+            quoteBlock.style.display = 'none';
+            currentQuotedComment = null;
+        });
+
+        // Preload images for smoother experience
+        function preloadImages() {
+            imageList.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+
+        // Initialize
+        preloadImages();
+
     </script>
 </body>
 
